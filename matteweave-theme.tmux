@@ -108,7 +108,7 @@ set "window-status-format" "#[fg=$powder_blue bg=$raisin none] $window_status "
 
 window_status_current="$(get @matteweave_window_status_current "#I#{sep} #W")"
 window_status_current="${window_status_current//\#\{sep\}/$sep_left}"
-set "window-status-current-format" "$(bubble $green $raisin "$window_status_current")"
+set "window-status-current-format" "$(l_cheek $green_bright $raisin)$(bubble $green $raisin "$window_status_current")$(r_cheek $green_bright $raisin)"
 
 # left status
 set "status-left-length" "100"
