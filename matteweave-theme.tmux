@@ -63,9 +63,9 @@ bubble() {
 
 prefix_() {
   local -r prefix_text="$(get_prefix)"
-  local -r prefix_mode="$(bubble $yellow $raisin "$prefix_text")"
+  local -r prefix_mode="$(bubble $yellow default "$prefix_text")"
   local -r copy_text="$(get @matteweave_copy_text COPY)"
-  local -r prefix_copy="$(bubble $blue_bright $raisin "$copy_text")"
+  local -r prefix_copy="$(bubble $blue_bright default "$copy_text")"
   local -r copy_mode_active="#{?pane_in_mode,$prefix_copy ,}"
   local -r prefix_mode_active="#{?client_prefix,$prefix_mode ,}"
   local -r prefix="$prefix_mode_active$copy_mode_active"
@@ -76,21 +76,21 @@ prefix_() {
 set "clock-mode-colour" "$green_bright"
 set "clock-mode-style" 24
 
-set "status-style" "fg=$powder_blue,bg=$raisin,none"
+set "status-style" "fg=$powder_blue,bg=default,none"
 set "status-justify" "left"
 
 # message and cmd promt style
-set "message-style" "fg=$blue_bright,bg=$raisin,none"
-set "message-command-style" "fg=$blue_bright$,bg=$raisin,none"
+set "message-style" "fg=$blue_bright,bg=default,none"
+set "message-command-style" "fg=$blue_bright$,bg=default,none"
 
-set "mode-style" "fg=$theme_yellow,bg=$raisin,italics"
+set "mode-style" "fg=$theme_yellow,bg=default,italics"
 
 # session listing
 set "display-panes-active-colour" "$yellow"
 set "display-panes-colour" "$powder_blue"
 
 # window options
-setw "pane-border-style" "fg=$raisin"
+setw "pane-border-style" "fg=default"
 setw "pane-active-border-style" "fg=$green"
 setw "window-status-style" ""
 setw "window-status-activity-style" ""
@@ -104,7 +104,7 @@ set "window-active-style" "default"
 # window bar
 window_status="$(get @matteweave_window_status '#I#{sep} #W')"
 window_status="${window_status//\#\{sep\}/$sep_left}"
-set "window-status-format" "$(bubble $powder_blue $raisin "$window_status")"
+set "window-status-format" "$(bubble $powder_blue default "$window_status")"
 
 window_status_current="$(get @matteweave_window_status_current "#I#{sep} #W")"
 window_status_current="${window_status_current//\#\{sep\}/$sep_left}"
@@ -117,7 +117,7 @@ set "status-left-style" ""
 status_left="$(get @matteweave_status_left " #{session_bar}#{sep} #S")"
 status_left="${status_left//\#\{sep\}/$sep_left}"
 status_left="${status_left//\#\{session_bar\}/$(session_bar)}"
-set "status-left" "$(l_cheek $green_bright $raisin)#[fg=$raisin bg=$green_bright bold]${status_left}$(r_cheek $green_bright $raisin) $(prefix_)"
+set "status-left" "$(l_cheek $green_bright default)#[fg=default bg=$green_bright bold]${status_left}$(r_cheek $green_bright default) $(prefix_)"
 
 # right status
 time_format="$(get @matteweave_time_format %T)"
@@ -134,4 +134,4 @@ set "status-right-style" ""
 status_right="$(get @matteweave_status_right '@#h ')"
 status_right="${status_right//\#\{sep\}/$sep_right}"
 status_right="${status_right//\#\{session_bar\}/$(session_bar)}"
-set "status-right" "${widgets}$(l_cheek $green_bright $raisin)#[fg=$raisin bg=$green_bright] #{b:pane_current_path} $(r_cheek $green_bright $raisin)"
+set "status-right" "${widgets}$(l_cheek $green_bright default)#[fg=default bg=$green_bright] #{b:pane_current_path} $(r_cheek $green_bright default)"
